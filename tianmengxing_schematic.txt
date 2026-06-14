@@ -1,0 +1,308 @@
+                                                                                                                                                        R19           LINK1          GND                                 R18
+                                                                                                                                                                                                                        100k
+                                                                                                                                                  PB22                                          PA2/ROSC
+                                                                                                                                                                                                                        ±0.1% ROSC
+                                                         PB12                                                                                           2k
+                                                            PB11
+                                                               PB10                                                                                     0603                         LED
+                                                                   PB9
+                                                                      PB8
+                                                                         PB7
+                                                                            PB6
+                                                                                PA11/U0RX
+                                                                                   PA10/U0TX
+                                                                                       PA9
+                                                                                          PA8
+                                                                                             PB5
+                                                                                                 PB4
+                                                                                                    PB3
+                                                                                                       PB2
+                                                                                                           PA7
+
+                                                                                                                                                                                                                  R20      R8      3V3
+                                                                                                                                                                                          PA1
+                                            U1           64                                                                                                                                                                0
+                                                            63                                                                                                                                                    4.7k
+                                                               62                                                                                                                                                                  +5V
+                                                                  61                                                                                                                                              R21
+                                                                      60                                                                                                                  PA0
+                                                                         59
+                                                                            58                                                                                                                                    4.7k
+                                                                                57
+                                                                                   56                                                                                                           IO
+                                                                                       55
+                                                                                          54
+                                                                                             53
+                                                                                                52
+                                                                                                    51
+                                                                                                       50
+                                                                                                           49
+
+                                                                                                                                                                                                                           R9
+
+                                                         PB12                                                                                                                                                              NC
+                                                            PB11
+                                      1                        PB10                                                                        48
+                                      2                                                                                                    47
+                                      3                            PB9                                                                     46
+                                      4                               PB8                                                                  45
+                                      5                                  PB7                                                               44
+                                      6                                     PB6                                                            43
+                                      7                                         PA11                                                       42
+                                      8                                            PA10                                                    41
+                                      9                                                PA9                                                 40
+                                     10                                                   PA8                                              39
+                                     11                                                      PB5                                           38
+                                     12                                                          PB4                                       37
+                                     13                                                             PB3                                    36
+                                     14                                                                PB2                                 35
+                                     15                                                                    PA7                             34
+                                     16                                                                                                    33
+                        PB13                PB13                                                                                      PB1               PB1/SPI1_CS3
+                        PB14                PB14                                                                                      PB0
+                        PB15                PB15                                                                         PA6/HFXOUT                     PB0/SPI1_CS2
+                        PB16                PB16                                                                            PA5/HFXIN
+                        PA12                PA12/CAN_TX                                                                  PA4/LFXOUT                     PA6_HFXOUT
+                        PA13                PA13/CAN_RX                                                                     PA3/LFXIN
+                        PA14                PA14                                                                            PA2/ROSC                    PA5_HFXIN
+                        PA15                PA15/A1_0                                                                                VSS
+                        PA16                PA16/A1_1                                                                                VDD                PA4_LFXOUT
+                        PA17                PA17/A1_2                                                                               PA31
+                  PA18/BSL                  PA18/A1_3                                                                              NRST                 PA3_LFXIN
+             PA19/SWDIO                     PA19/SWDIO                                                                              PA30
+             PA20/SWCLK                     PA20/SWCLK                                                                              PA29                PA2/ROSC          3V3
+                        PB17                PB17/A1_4                                                                               PA28
+                        PB18                PB18/A1_5    PA21/A1_7/VREF-                                                              PA1               PA31       C38         C39                                      3V3
+                        PB19                PB19/A1_6       PA22/A0_7                                                                 PA0               NRST       100nF       10uF
+                                                               PB20/A0_6                                                                                PA30                                                                  R24
+                                                                   PB21                                                                                 PA29                                              RESET               47k
+                                                                      PB22                                                                              PA28
+                                                                         PB23                                                                           PA1                                            1  2                              NRST
+                                                                            PB24/A0_5                                                                   PA0                                                                    C33
+                                                                                PA23/VREF+                                                                                                                                     10nF
+                                                                                   PA24/A0_3                                                                                                           3  4
+                                                                                       PA25/A0_2
+                                                                                          PB25/A0_4
+                                                                                             PB26
+                                                                                                 PB27
+                                                                                                    PA26/A0_1/CAN_TX
+                                                                                                       PA27/A0_0/CAN_RX
+                                                                                                           VCORE
+
+                                                         17
+                                                            18
+                                                               19
+                                                                  20
+                                                                      21
+                                                                         22
+                                                                            23
+                                                                                24
+                                                                                   25
+                                                                                      26
+                                                                                          27
+                                                                                             28
+                                                                                                29
+                                                                                                    30
+                                                                                                       31
+                                                                                                          32
+
+                                                                                                                         C40                                                                                               BSL          3V3
+                                                                                                                        470nF
+                                                         PA22                                                 VCORE                                                                       PA18/BSL                      1       2
+                                                            PB20
+                                                               PB21                                                                                                                                       R25           3       4
+                                                                   PB22
+                                                                      PB23                                                                 VCORE                                                          47k
+                                                                         PB24
+                                                                                PA24
+                                                                                   PA25
+                                                                                       PB25
+                                                                                          PB26
+                                                                                             PB27
+                                                                                                 PA26
+                                                                                                    PA27
+
+                                                                    C44
+
+             R42                            PA21/VREF-
+
+             0603                                        R4 1uF
+             0
+GND          ±1%   AGND                                  0603                                                                                                                                                              KEY
+
+                                                         NC                                                                                                                                                             1       2
+
+                                                         ±1%             PA23/VREF+                                                                                                       PB21
+
+                                                         AGND                                                                                                                                                           3       4
+
+             0
+
+                                 X1                                                                                                                        MSPM0G3507-64P                                          GND
+                                                                                                                                                        Schematic
+                              4      3                   PA6_HFXOUT                                                                                                                                       2024-11-14
+                                                                                                                                                              core                                        2024-11-14
+
+                C34 1                2           C35
+                                                 15pF
+                15pF 40MHz
+PA5_HFXIN
+  PA3_LFXIN                      X3                                                                                      EDA                                              ·MSPM0G3507
+
+                                                        PA4_LFXOUT
+
+                   C36           32.768kHz       C37                                                                                                                                                1                           3
+                   12pF                          12pF
+
+             GND                            GND                                                                                                                           A4              EDA
+                                                         D1                                                                                                                   GND
+                                                        1 I/O
+USB1                                                    2 GND                                      VBUS_5V                                                                                                                                                                      3V3
+                                                        3 I/O
+              A1B12  VBUS_5V R28                                                                                               GND
+              A4B9                     5.1k
+              A5                                                                                                                                                                                                                                                    22K
+        GND   A6               R27         3                                     I/O 6             USB_D+                                                                                                                                                                                   GND
+       VBUS   A7               5.1k                                                                                                                                                                                                                     R15 100k R14 22kVCC 5                       E1
+              A8                                                                                               F1                C27                                                                                                                                            C28 C29
+         CC1  B5     VBUS_5V                                                     I/O 4                         0603                                                                                                                                                             22uF 100nF
+         DP1  B6                                                                                               500mA
+         DN1  B7
+       SBU1   B8                                                                                                                 22uF                    U9 +5V GND
+         CC2  B4A9
+         DP2  B1A12                                                                                                                    5 FB         EN   1                                                                                                                100K                                          EXT_3V3
+         DN2  1                                                                                                                        4 VIN      GND    2                                                                                                                                                 F2
+       SBU2   2                                                                                    USB_D- +5V           +5V                              3
+       VBUS   3                                                                                                                                      LX                                                                                                                                                    0603
+        GND   4                                                                                                                                               L1 2.2uH                                                                                                                                     500mA
+      SHELL
+      SHELL                                                                                                                                   VO = 0.6x(1+R1/R2)                                                                                                                R1=450K
+      SHELL                                                                                                                                                                                                                                                                     R2=100K
+      SHELL
+                                                                                                                                 3V3 R29                    PWR1
+TYPE-C16PIN                                                                                                                                                              GND
+                                                                                                                                            2k
+                                                                                                                                            0603
+
+                                                                                                                                                                                                                                                                                                        USB
+
+                                                                                                                  ±1%          EXT_CHIP_VREF+
+                                                                                                                  0603
+                                                                                                                  NC           EXT_PIN_VREF+
+
+                                                                                        TP4                       R5    TP2            L2                3V3
+
+                                                                                              3V3                 ±1%
+                                                                                                                  0603
+                                                               PA23/VREF+                                         0
+
+                                                                                                                  R6    C11      C10   600@100MHz
+                                                                                                                        0603     0603
+                                                                                                                  ±1%   100nF    1uF
+                                                                                                                  0603
+                                                                                                                  NC
+
+                                                                                                                  R7
+
+                                                                                                               47R
+
+                                                                                                                      AGND AGND
+
+                     +5V                           U23                                                                                 Schematic                                                                                                                                                           2024-11-14
+                                1 IN                                                                                                                                                                                                                                                                       2024-11-14
+                                      REF                                                                                                   power
+                            C48                OUT 2           EXT_CHIP_VREF+
+                            470nF
+                                      GND
+
+                                                                                                               EDA                                            ·MSPM0G3507
+
+              AGND                    AGND                                                                                                                                                                                                                                                              2                        3
+
+                                                                                                                                                              A4                                                                                                                            EDA
+                                                  GND                 GND                                                                                       GND               GND
+
+                                                             U21                                                                                                         U22
+
+                    U0TX      I2C0-SDA PA0                1  1     2  2    PA28 I2C0-SDA        U0TX                                       A0_0 PA27                  1  1     2  2      PA26                A0_1
+                    U0RX      I2C0-SCL PA1                3  3     4  4    PA31 I2C0-SCL        U0RX                                       A0_2 PA25                  3  3     4  4
+                                                          5  5     6  6    PB4 U1TX                                                        A0_4 PB25                  5  5     6  6      PA24                A0_3
+                                   U1TX PA8               7  7     8  8    PB5 U1RX          EXT_CHIP_VREF+                                A0_6 PB20                  7  7     8  8
+                                   U1RX PA9               9  9    10  10   PA10/U0TX          C49                                         A0_12 PA14                  9  9    10  10     PB24                A0_5
+                                   U2TX PB15             11  11   12  12   PA11/U0RX          0603                                         A1_1 PA16                 11  11   12  12
+                                   U2RX PB16             13  13   14  14   PB12 U3TX          1uF                                          A1_4 PB17                 13  13   14  14     PA22                A0_7
+                                   U3TX PB2              15  15   16  16   PB13 U3RX                                                       A1_6 PB19                 15  15   16  16
+                                   U3RX PB3              17  17   18  18   PA20/SWCLK                                                                                17  17   18  18     PA15                A1_0
+                                 PA19/SWDIO              19  19   20  20   EXT_3V3                                                                PA2/ROSC           19  19   20  20
+                                                         21  21   22  22   VBUS_5V                                                                                   21  21   22  22     PA17                A1_2
+                                             PB6         23  23   24  24   PB7                                                                            PB21       23  23   24  24
+                                             PB8         25  25   26  26   PB9                                                                            PA30       25  25   26  26     PB18                A1_5
+                                            PA12         27  27   28  28   PA13                                                              PB0/SPI1_CS2            27  27   28  28
+                                            PB23         29  29   30  30   PB26                                                                           PB10       29  29   30  30     PA21/VREF- A1_7
+                                            PB27         31  31   32  32   PA29                                                                           PB11       31  31   32  32
+                                                         33  33   34  34                                                                                 NRST        33  33   34  34     EXT_PIN_VREF+ PA23
+                    1                      AGND          35  35   36  36                                                                                             35  35   36  36
+                             GND                         37  37   38  38                                                                                             37  37   38  38     EXT_3V3
+                                                         39  39   40  40                                                                                             39  39   40  40
+                                           1                                                                                                                                             VBUS_5V
+                                                                  1
+                                                                                          1                                                                                              PB22
+
+                                                                                                                                                                                                              GNDPB1/SPI1_CS3
+                                                                                                                                                                                                                                                                                                                            GNDPA7
+                                                                                                                                                                                         PB14
+                                                                                                                                                                                         PA18/BSL
+
+                                                                                      C50
+
+                                                  GND                                 0603                                                                      GND           VBUS_5V EXT_3V3
+
+                                                                  VBUS_5V EXT_3V3     100nF
+
+                                                                                      AGND AGND
+
+                          EXT_3V3                                                                                                                                        C52 1uF
+
+                                              0R 1VCC 2GND                                                                        U24                                  C51 100nF
+                                              1GND 2VCC1GND2VCC                                                                                                 3V3
+
+EXT_3V3                   R1       R3                                                                     W_CS                 1  CS#           VCC    8               C46 100nF                                                                                                                                                           EXT_3V3
+                          NC       NC                                                                  W_MISO                  2  DO             IO3   7
+                                                                                                                               3  IO2           CLK    6                         W_CLK                                                                                                                                                             PA20/SWCLK
+         R0               0               H8                                                                  3V3              4  GND                  5                         W_MOSI             VBUS_5V                                                                                                                       U20              PA19/SWDIO
+                                                                                                                                                   DI
+         R2               0              1    LCD_SCL                      PB9        SPI1_SCK-61                        W_CS                                                            PA10/U0TX                                                                                                                             1  1  2  2
+                                         2    LCD_SDA                      PB8        SPI1_PICO-60                   W_MISO                                                              PA11/U0RX                                                                                                                             3  3  4  4
+         LCD_SCL                         3    LCD_RES                      PB10                                      W_MOSI                                                                                                                                                                                                    5  5  6  6
+         LCD_SDA                         4                                 PB11                                                                                                                                                                                                                                                7  7  8  8
+         LCD_RES                         5     LCD_DC                      PB14                                        W_CLK
+                                         6      LCD_CS                     PB26                                                                 PB6 SPI1_CS0-58
+          LCD_DC                         7                                                                                                      PB7 SPI1_POCI-59
+           LCD_CS                        8            BLK                                                                                       PB8 SPI1_PICO-60
+                                                                                                                                                PB9 SPI1_SCK-61
+                 BLK
+                                                                                                                                                           SPI FLASH
+SPI0.96/1.3OLED                                              SPI-LCD
+
+                                                                                                                                          U18                   3V3
+
+                                                                           340_TX                  D9   BSLRX  USB_D+                  1  UD+          V3  10        340_RX       C47
+                                                                           340_RX     R37 200           BSLTX  USB_D-                  2  UD-       RXD    9         340_TX
+                                                                                                                                       3  GND        TXD   8
+                                                                           PA11/U0RX                   BSLRX                           4  RTS#      VCC    7
+                                                                           PA10/U0TX                   BSLTX                           5  CTS#    TNOW     6
+
+                                                                                                                                                                                  100nF
+
+                                                                                                                                          CH340E
+
+             hole1            hole2               hole3           hole4                                                                        Schematic                                                                                                                                                                             2024-11-14
+             GND              GND                 GND             GND                                                                                                                                                                                                                                                                2024-11-14
+                                                                                                                                                 extension
+
+                                                                                                               EDA                                              ·MSPM0G3507
+
+                                                                                                                                                                                                             3                                                                                                                                   3
+
+             GND              GND                 GND             GND                                                                                                A4                           EDA
+
