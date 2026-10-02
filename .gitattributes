@@ -1,0 +1,4 @@
+# Shell git hooks must stay LF.
+# With core.autocrlf=true a CRLF hook makes sh treat \r as part of the command
+# and every commit fails with a confusing error.
+.githooks/* text eol=lf
