@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+    <name>mspm0_24diansai</name>
+    <comment>MSPM0G3507 24diansai — Ported from STM32F103</comment>
+    <projects>
+    </projects>
+    <buildSpec>
+        <buildCommand>
+            <name>org.eclipse.cdt.managedbuilder.core.genmakebuilder</name>
+            <arguments>
+            </arguments>
+        </buildCommand>
+        <buildCommand>
+            <name>org.eclipse.cdt.managedbuilder.core.ScannerConfigBuilder</name>
+            <arguments>
+            </arguments>
+        </buildCommand>
+    </buildSpec>
+    <natures>
+        <nature>org.eclipse.cdt.core.cnature</nature>
+        <nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
+        <nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
+        <nature>com.ti.ccstudio.core.TIGenericNature</nature>
+    </natures>
+</projectDescription>

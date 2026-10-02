@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ccs_project>
+    <deviceVariant value="Cortex M0+.MSPM0G3507"/>
+    <deviceEndianness value="little"/>
+    <connection value=""/>
+    <outputFormat value="ELF"/>
+    <rts value="libc.a"/>
+    <templateProperties value=""/>
+    <isElfFormat value="true"/>
+    <isTargetConfigurationFile value="true"/>
+    <targetConfigFile value="MSPM0G3507.ccxml"/>
+</ccs_project>

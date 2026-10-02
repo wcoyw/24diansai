@@ -95,7 +95,7 @@ static int32_t s_segment_ticks = 0;
 #define YAW33_MIN                    -60.0f
 #define YAW33_MAX                    -20.0f
 /* 第2次改动说明：Q3/Q4 的第一次定向目标角设置为 -33 度，后续闭环转向和到位判定都围绕这个目标执行。 */
-#define YAW33_TARGET                 -33.1f
+#define YAW33_TARGET                 -33.7f
 #define YAW147_MIN                   -160.0f
 #define YAW147_MAX                   -120.0f
 /* 第3次改动说明：第二次定向目标角设置为 -141 度，与第二段直线的 yaw 保持一致。 */
@@ -111,7 +111,7 @@ static int32_t s_segment_ticks = 0;
 /* 第2次改动说明：限制最大转向 PWM，防止原地转过猛造成过冲。 */
 #define YAW_TURN_MAX_PWM             16.0f
 /* 第2次改动说明：必须连续 3 个控制周期都进入容差，才认为第一次转向真正稳定完成。 */
-#define YAW_TURN_STABLE_CNT          3
+#define YAW_TURN_STABLE_CNT          2
 #define YAW_DEADBAND                 2.0f
 #define YAW_CORR_KP                  0.25f
 #define YAW_CORR_STEP                1.5f

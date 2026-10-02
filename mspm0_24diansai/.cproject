@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cproject>
+    <storageModule moduleId="cdtBuildSystem" buildSystemId="org.eclipse.cdt.managedbuilder.core.managedbuild">
+    <configuration
+        id="com.ti.ccstudio.buildDefinitions.MSPM0.Debug.373018448"
+        name="Debug">
+        <folderInfo id="com.ti.ccstudio.buildDefinitions.MSPM0.Debug.373018448.">
+            <toolChain id="com.ti.ccstudio.buildDefinitions.MSPM0_20.2.DebugToolChain.123456789"
+                       name="TI ARM Clang Compiler"
+                       superClass="com.ti.ccstudio.buildDefinitions.MSPM0_20.2.DebugToolChain">
+                <targetPlatform id="com.ti.ccstudio.buildDefinitions.MSPM0_20.2.DebugTarget.987654321"
+                                name="Platform"
+                                superClass="com.ti.ccstudio.buildDefinitions.MSPM0_20.2.DebugTarget"/>
+                <builder id="com.ti.ccstudio.buildDefinitions.MSPM0_20.2.GCCBuilder"
+                         name="GNU Make"
+                         superClass="com.ti.ccstudio.buildDefinitions.MSPM0_20.2.GCCBuilder"/>
+                <tool id="com.ti.ccstudio.buildDefinitions.MSPM0_20.2.compiler.1944911829"
+                      name="ARM Compiler"
+                      superClass="com.ti.ccstudio.buildDefinitions.MSPM0_20.2.compiler">
+                    <option id="com.ti.ccstudio.buildDefinitions.MSPM0_20.2.compiler.SILICON_VERSION.2031068501"
+                            name="Target processor (--silicon_version)" value="com.ti.ccstudio.buildDefinitions.MSPM0_20.2.compiler.SILICON_VERSION.7M4"/>
+                    <option id="com.ti.ccstudio.buildDefinitions.MSPM0_20.2.compiler.INCLUDE_PATH.163031433"
+                            name="Include path (-I)" value="${PROJECT_ROOT}/Core/Inc"/>
+                    <option id="com.ti.ccstudio.buildDefinitions.MSPM0_20.2.compiler.DEFINE.105826608"
+                            name="Pre-define preprocessor macro (-D)" value="MSPM0G3507"/>
+                    <option id="com.ti.ccstudio.buildDefinitions.MSPM0_20.2.compiler.DEBUG.1384857763"
+                            name="Debug mode (--debug)" value="com.ti.ccstudio.buildDefinitions.MSPM0_20.2.compiler.DEBUG.FULL"/>
+                </tool>
+                <tool id="com.ti.ccstudio.buildDefinitions.MSPM0_20.2.linker.2133760012"
+                      name="ARM Linker"
+                      superClass="com.ti.ccstudio.buildDefinitions.MSPM0_20.2.linker">
+                    <option id="com.ti.ccstudio.buildDefinitions.MSPM0_20.2.linker.MAP_FILE.1641045596"
+                            name="Linker command file (--cmd_file)" value="${PROJECT_ROOT}/MSPM0G3507.cmd"/>
+                </tool>
+            </toolChain>
+        </folderInfo>
+        <sourceEntries>
+            <entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Core/Src"/>
+            <entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Startup"/>
+        </sourceEntries>
+    </configuration>
+    </storageModule>
+</cproject>

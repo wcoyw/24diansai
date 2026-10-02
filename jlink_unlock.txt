@@ -1,0 +1,7 @@
+si SWD
+speed 100
+device MSPM0G3507
+connect
+unlock MSPM0G3507
+erase
+exit
