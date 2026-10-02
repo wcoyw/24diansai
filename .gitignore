@@ -1,0 +1,44 @@
+# ==== 编译产物与调试临时文件（不纳入版本控制）====
+# Keil MDK / ArmCC
+*.o
+*.d
+*.crf
+*.axf
+*.elf
+*.hex
+*.bin
+*.lst
+*.map
+*.dep
+*.iex
+*.lnp
+*.plg
+*.htm
+JLinkLog.txt
+*.uvguix.*
+Objects/
+Listings/
+DebugConfig/
+
+# CCS / TI MSPM0
+*.obj
+*.out
+*.opt
+*.d_raw
+Debug/
+Release/
+targetConfigs/
+
+# 通用临时文件
+*.log
+*.tmp
+*.bak
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# ==== 工具生成物 ====
+.codegraph/
+
+# ==== 体积较大的第三方 SDK（默认不纳入，需要时可自行放开）====
+# CAR_Keil/libraries/
