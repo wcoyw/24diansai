@@ -15,6 +15,7 @@
 *.plg
 *.htm
 JLinkLog.txt
+JLinkSettings.ini
 *.uvguix.*
 Objects/
 Listings/
@@ -28,6 +29,18 @@ DebugConfig/
 Debug/
 Release/
 targetConfigs/
+.launches/
+.settings/
+LaunchConfigurations/
+*.launch
+
+# CCS Theia
+.theia/
+
+# SysConfig 生成物（改 .syscfg 后重新生成）
+# 注意：CAR_Keil/libraries/ 里厂商自带的副本仍然入库，见文件末尾说明
+mspm0_24diansai/Core/Inc/ti_msp_dl_config.h
+mspm0_24diansai/Core/Src/ti_msp_dl_config.c
 
 # 通用临时文件
 *.log
@@ -40,5 +53,7 @@ desktop.ini
 # ==== 工具生成物 ====
 .codegraph/
 
-# ==== 体积较大的第三方 SDK（默认不纳入，需要时可自行放开）====
+# ==== 体积较大的第三方 SDK ====
+# CAR_Keil/libraries/ 目前仍然入库（约 26MB，含预编译 .a）。
+# 若要剔除，需要重写历史（git filter-repo），不要在已推送的仓库上随手操作。
 # CAR_Keil/libraries/

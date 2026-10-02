@@ -1,0 +1,73 @@
+#!/bin/sh
+# 24diansai pre-commit：拦截编译产物、生成物与超大文件
+#
+# 这是版本化 hooks（.githooks/），需要先执行一次：
+#     pwsh -File tools/setup-hooks.ps1
+# 确认确实要提交被拦截的内容时，可绕过：
+#     git commit --no-verify
+
+set -u
+
+blocked_ext='\.(o|obj|out|hex|bin|elf|axf|map|lst|crf|dep|lnp|plg|iex|tmp|bak|log)$'
+blocked_dir='^(Debug|Release|Objects|Listings|DebugConfig|\.codegraph)/'
+max_bytes=5242880   # 5 MB，与 AGENTS.md 的约定一致
+
+tmp=$(mktemp 2>/dev/null || echo "/tmp/precommit.$$")
+git diff --cached --name-only --diff-filter=ACM > "$tmp" 2>/dev/null
+
+fail=0
+
+while IFS= read -r f; do
+    [ -n "$f" ] || continue
+
+    case "$f" in
+        *.uvguix.*|JLinkLog.txt|JLinkSettings.ini)
+            echo "[pre-commit] 拒绝提交 IDE/调试产物: $f"
+            fail=1
+            continue
+            ;;
+    esac
+
+    if echo "$f" | grep -Eq "$blocked_dir"; then
+        echo "[pre-commit] 拒绝提交编译输出目录: $f"
+        fail=1
+        continue
+    fi
+
+    if echo "$f" | grep -Eq "$blocked_ext"; then
+        echo "[pre-commit] 拒绝提交编译产物: $f"
+        fail=1
+        continue
+    fi
+
+    # SysConfig 生成物：厂商 SDK 内的不拦，用户自有工程内的只警告不拦
+    case "$f" in
+        CAR_Keil/libraries/*) ;;
+        *ti_msp_dl_config.c|*ti_msp_dl_config.h)
+            echo "[pre-commit] 提示: $f 是 SysConfig 生成物，应改 .syscfg 后重新生成，不要手改。"
+            ;;
+    esac
+
+    if [ -f "$f" ]; then
+        size=$(wc -c < "$f" 2>/dev/null | tr -d ' ')
+        case "$size" in
+            ''|*[!0-9]*) size=0 ;;
+        esac
+        if [ "$size" -gt "$max_bytes" ]; then
+            echo "[pre-commit] 拒绝提交大于 5MB 的文件 ($((size / 1048576))MB): $f"
+            fail=1
+        fi
+    fi
+done < "$tmp"
+
+rm -f "$tmp" 2>/dev/null
+
+if [ "$fail" -ne 0 ]; then
+    echo ""
+    echo "提交已被拦截。原因见上。"
+    echo "如果你确认这些文件应当入库，请用:  git commit --no-verify"
+    echo "如果这是新出现的产物类型，请补进 .gitignore（并在 AGENTS.md 里记一笔）。"
+    exit 1
+fi
+
+exit 0

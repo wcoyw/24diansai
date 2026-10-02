@@ -1,64 +1,67 @@
 # 仓库协作约定
 
-本文件约束所有在本仓库工作的 AI agent。核心原则只有一条：
-**版本状态以 git 为唯一事实来源，回退必须走 git，不许凭对话历史"复原"文件。**
+本文件约束所有在本仓库工作的 AI agent（Codex / Claude Code / Cursor / DSH 等）。
 
-## 一、开始任务前
+**版本状态以 git 为唯一事实来源。** 回退走 git，恢复文件走 git，改动历史写在 commit message 里。
 
-1. 先跑 `git status --short` 看工作区状态。
-2. 工作区有未提交改动时，先判断是不是本次任务的一部分：
-   - 不是：先 `git add -A` 并提交，例如 `chore: 保存当前进度`，留出一个可回退点。
-   - 是：说明情况后再动手。
-3. 大改动（重构、换库、批量重命名）之前，必须有一个干净的提交作为回退锚点。
+## 每个检查点
 
-## 二、任务过程中
+一个**检查点** = 一次可验证的小步完成。完成的信号：编译通过、功能跑通、某个 bug 修好、一次实验做完。
 
-每完成一个可验证的小目标就提交一次，不要攒到最后：
+1. 动手前先看状态：
 
-    git status --short                # 先看清哪些文件动了
-    git add <本次改动涉及的文件路径>    # 只暂存本次任务的文件
-    git diff --cached --stat          # 复核即将提交的内容
-    git commit -m "fix(pid): 修正积分饱和导致的超调"
+       git status --short
 
-**默认只提交本次任务改过的文件。** 不要把无关的改动卷进同一个提交；暂存错了用
-`git restore --staged <路径>` 撤出来。
+   工作区里有与本次任务无关的改动时，先给它们一个提交（`chore: 保存当前进度`），拿到干净的回退锚点。
 
-只有用户明确要求"存个档"时，才用 `git add -A` 把当前全部改动一次性提交，
-提交信息写清楚是整体存档，例如 `chore: 保存当前全部进度`。
+2. 小步完成即提交，不要攒到最后：
+
+       git add -A
+       git commit -m "fix(pid): 修正积分饱和导致的超调"
+
+3. 提交后由 `.githooks/post-commit` 自动推送到远端。这一步让历史离开本机，
+   换会话、换机器、换 agent 都能靠 git 回退。
+
+   推送失败时把**原始报错**交给用户，不要静默重试、不要擅自换远端、不要改认证配置。
 
 提交信息格式：`<type>(<scope>): <中文描述>`
 
-- type 取 `feat` / `fix` / `refactor` / `chore` / `docs` / `test`
+- type：`feat` / `fix` / `refactor` / `chore` / `docs` / `test`
 - scope 可省略，例如 `fix: 修复 JY61P 串口丢帧`
 
-判断"该提交了"的信号：编译通过、功能跑通、某个 bug 修好了、一次实验完成。
+## 回退
 
-## 三、回退怎么做（按优先级）
-
-1. 撤销某次提交但保留历史：`git revert <sha>`
+1. 撤销某次提交、保留历史：`git revert <sha>`
 2. 单个文件回到历史版本：`git checkout <sha> -- <路径>`
-3. 对比现在和某个历史点：`git diff <sha> -- <路径>`
-4. 丢弃未提交的改动：`git restore <路径>`（确认后再执行）
-5. 查看改了什么：`git log --oneline`、`git show <sha>`
+3. 看现在与某个历史点的差异：`git diff <sha> -- <路径>`
+4. 丢弃未提交的改动：`git restore <路径>`
+5. 查看历史：`git log --oneline`、`git show <sha>`
 
-`git reset --hard`、`git push --force`、改写已推送历史：一律禁止，除非用户明确点名要求。
+`git reset --hard`、`git push --force`、改写已推送历史，只在用户明确点名时使用。
 
-## 四、任务结束后
+## 什么不进版本控制
 
-    git push origin main
+规则见 `.gitignore`。出现新的产物类型时补进 `.gitignore`，并在提交信息里写明原因。
 
-推送失败时把原始报错交给用户，不要静默重试，也不要擅自换远端或改认证配置。
+SysConfig 是引脚、外设、时钟、中断的来源：改 `.syscfg` 后重新生成，
+生成出来的 `ti_msp_dl_config.c` / `.h`、`device_linker.cmd`、`Objects/`、`Listings/` 都保持在版本控制之外。
 
-## 五、仓库纪律
-
-- 不提交编译产物、烧录文件、调试日志，规则见 `.gitignore`；发现新的产物类型要补进去。
-- 不提交密钥、token、密码、个人账号信息。
-- 新增单个大于 5MB 的文件前先问用户。
-- 根目录的 `第N次修改说明.md`、`问题分析与解决方案.md` 是改动记录，按需更新，不删除历史。
-
-## 六、工程结构
+## 工程结构
 
 - `24diansai/`：STM32F103 + Keil MDK 主工程（循迹小车）
 - `mspm0_24diansai/`：MSPM0G3507 + CCS 工程
-- `CAR_Keil/`：MSPM0G3507 CAN / IMU 参考工程，自写代码在 `project/user`，`libraries` 是厂商 SDK
-- 根目录 `*.md` / `*.txt`：调试记录、引脚表、移植计划
+- `CAR_Keil/`：MSPM0G3507 CAN / IMU 参考工程；自写代码在 `project/user`，`libraries/` 是厂商 SDK
+- 根目录 `*.md` / `*.txt`：调试记录、引脚表、移植计划（`第N次修改说明.md` 是历史存档，保留原样）
+
+## 新机器 / 新克隆
+
+    pwsh -File tools/setup-hooks.ps1
+
+启用 `.githooks/`（提交拦截 + 自动推送）。每个克隆执行一次，否则 hooks 不生效。
+
+## 一键检查点
+
+    pwsh -File tools/checkpoint.ps1 "fix(pid): 修正积分饱和"
+
+等价于 `git add -A` + `git commit` + 自动推送。在 VSCode 里也可以用
+命令面板的 `Tasks: Run Task` → `检查点：提交并推送`。

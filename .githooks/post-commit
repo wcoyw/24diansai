@@ -1,0 +1,47 @@
+#!/bin/sh
+# 24diansai post-commit：每个检查点自动推送到远端
+#
+# 目的：让 git 历史不只存在这一台机器上，这样换会话、换机器、换 agent
+#       都能用 git 回退，而不是靠对话记忆复原代码。
+#
+# 关闭自动推送：
+#     export DSH_NO_AUTOPUSH=1
+#
+# 本脚本永远以 0 退出，不会让一次成功的提交在事后被报成失败。
+
+[ "${DSH_NO_AUTOPUSH:-0}" = "1" ] && exit 0
+
+git_dir=$(git rev-parse --git-dir 2>/dev/null) || exit 0
+
+# rebase / merge / cherry-pick 进行中时不要推送
+[ -d "$git_dir/rebase-merge" ] && exit 0
+[ -d "$git_dir/rebase-apply" ] && exit 0
+[ -f "$git_dir/MERGE_HEAD" ] && exit 0
+[ -f "$git_dir/CHERRY_PICK_HEAD" ] && exit 0
+
+branch=$(git symbolic-ref --quiet --short HEAD 2>/dev/null) || exit 0
+
+upstream=$(git rev-parse --abbrev-ref --symbolic-full-name '@{u}' 2>/dev/null)
+if [ -z "$upstream" ]; then
+    echo "[post-commit] 分支 '$branch' 没有上游，跳过自动推送。"
+    echo "             设置上游:  git push -u origin $branch"
+    exit 0
+fi
+
+remote=${upstream%%/*}
+
+echo "[post-commit] 推送到 $remote ($branch -> $upstream) ..."
+if git push "$remote" "$branch" 2>&1; then
+    echo "[post-commit] 已推送。"
+else
+    echo ""
+    echo "[post-commit] !! 推送失败：提交已在本地保存，但还没有离开这台机器。"
+    echo "              这台机器的 GitHub 通路有已知的两个脆弱点："
+    echo "                1) 本地加速器(127.0.0.1:443) 未运行  -> 连接被拒"
+    echo "                2) 工具用 OpenSSL 信任库而非 Windows 证书store -> 证书校验失败"
+    echo "              稳妥做法：改用 SSH 通道（ssh.github.com:443）。"
+    echo "              诊断：powershell -ExecutionPolicy Bypass -File fix-github-access.ps1 -SkipHosts"
+    echo "              临时关闭自动推送：export DSH_NO_AUTOPUSH=1"
+fi
+
+exit 0
